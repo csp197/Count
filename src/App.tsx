@@ -1,15 +1,16 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import TextBox from "./components/TextBox";
-import WordCounter from "./components/WordCounter";
+import Counter from "./components/Counter";
 
 function App() {
   const [text, setText] = useState<string>("");
+
   return (
     <>
       <Header />
       <TextBox text={text} setText={setText} />
-      <WordCounter text={text} />
+      <Counter text={text} />
     </>
   );
 }
