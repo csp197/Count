@@ -9,8 +9,10 @@ function App() {
   return (
     <>
       <Header />
-      <TextBox text={text} setText={setText} />
-      <Counter text={text} />
+      <div className="flex flex-row">
+        <TextBox text={text} setText={setText} />
+        <Counter text={text} />
+      </div>
     </>
   );
 }

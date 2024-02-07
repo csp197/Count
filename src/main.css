@@ -10,7 +10,7 @@
   
   color: rgba(255, 255, 255, 0.87); */
   color-scheme: light dark;
-  background-color: #003566;
+  background-color: #e6e6e6;
 
   /* font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,7 +20,7 @@
 }
 
 .main-textbox-field {
-  background-color: #0860b2;
+  background-color: #ffffff;
 }
 
 /* a {
