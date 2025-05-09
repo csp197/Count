@@ -43,7 +43,7 @@ const ReadabilityInfo = ({ text }: ReadabilityInfoProps) => {
 
   // Render grade level indicator
   const renderGradeLevelIndicator = () => {
-    const grades = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+    // const grades = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
     const gradeLevelNum = gradeLevel < 1 ? 0 : Math.min(Math.floor(gradeLevel), 12);
     
     // Get the appropriate color for the progress bar
@@ -75,21 +75,21 @@ const ReadabilityInfo = ({ text }: ReadabilityInfoProps) => {
   };
 
   // Get explanation text
-  const getExplanation = () => {
-    if (text.length === 0) {
-      return "Enter text to see readability analysis";
-    }
+  // const getExplanation = () => {
+  //   if (text.length === 0) {
+  //     return "Enter text to see readability analysis";
+  //   }
 
-    if (readingEase >= 80) {
-      return "Your text is easy to read and understand by a general audience.";
-    } else if (readingEase >= 60) {
-      return "Your text is fairly readable but could be simplified for a broader audience.";
-    } else if (readingEase >= 40) {
-      return "Your text may be difficult for many readers. Consider simplifying.";
-    } else {
-      return "Your text is very complex and difficult to read. Try shortening sentences and using simpler words.";
-    }
-  };
+  //   if (readingEase >= 80) {
+  //     return "Your text is easy to read and understand by a general audience.";
+  //   } else if (readingEase >= 60) {
+  //     return "Your text is fairly readable but could be simplified for a broader audience.";
+  //   } else if (readingEase >= 40) {
+  //     return "Your text may be difficult for many readers. Consider simplifying.";
+  //   } else {
+  //     return "Your text is very complex and difficult to read. Try shortening sentences and using simpler words.";
+  //   }
+  // };
 
   // Get improvement tips based on readability score
   const getImprovementTips = () => {

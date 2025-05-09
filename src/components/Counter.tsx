@@ -59,11 +59,11 @@ const Counter = ({ text }: ICounterProps) => {
 };
 
 // Helper function to get color based on readability score
-function getReadabilityColor(score: number): string {
-  if (score >= 80) return "text-success";
-  if (score >= 60) return "text-info";
-  if (score >= 40) return "text-warning";
-  return "text-error";
-}
+// function getReadabilityColor(score: number): string {
+//   if (score >= 80) return "text-success";
+//   if (score >= 60) return "text-info";
+//   if (score >= 40) return "text-warning";
+//   return "text-error";
+// }
 
 export default Counter;
