@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
 // Get repository name for GitHub Pages
-const repoName = 'count'
+const repoName = 'Count'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({

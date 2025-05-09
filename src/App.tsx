@@ -5,6 +5,7 @@ import Counter from "./components/Counter";
 import ReadabilityInfo from "./components/ReadabilityInfo";
 import ReadingProgress from "./components/ReadingProgress";
 import ComplexWordHighlighter from "./components/ComplexWordHighlighter";
+import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
   const [text, setText] = useState<string>("");
@@ -32,6 +33,7 @@ function App() {
   return (
     <>
       <ReadingProgress />
+      <ThemeToggle />
       <div className="min-h-screen paper-texture py-10">
         <div className="container mx-auto px-4 pb-10 pt-2">
           <div className="book-wrapper mx-auto" style={{ maxWidth: '1200px' }}>

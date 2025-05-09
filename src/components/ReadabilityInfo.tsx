@@ -5,7 +5,10 @@ import {
   countSyllables,
   countWords,
   formatGradeLevel,
-  getReadabilityDescription
+  getReadabilityDescription,
+  calculateSMOGIndex,
+  calculateGunningFogIndex,
+  getGradeLevelDescription
 } from "./CountService";
 
 interface ReadabilityInfoProps {
@@ -15,6 +18,8 @@ interface ReadabilityInfoProps {
 const ReadabilityInfo = ({ text }: ReadabilityInfoProps) => {
   const readingEase = calculateFleschReadingEase(text);
   const gradeLevel = calculateFleschKincaidGradeLevel(text);
+  const smogIndex = calculateSMOGIndex(text);
+  const gunningFogIndex = calculateGunningFogIndex(text);
   const formattedGradeLevel = formatGradeLevel(gradeLevel);
   const description = getReadabilityDescription(readingEase);
 
@@ -162,6 +167,35 @@ const ReadabilityInfo = ({ text }: ReadabilityInfoProps) => {
             </div>
             <div className="text-[#594a3a] italic text-sm">US K-12 grade level</div>
             {renderGradeLevelIndicator()}
+          </div>
+        </div>
+
+        {/* New readability metrics */}
+        <div className="my-4 border border-[#9c8b7a] p-4 bg-[#f8f5e6]">
+          <h3 className="text-base font-serif mb-3 border-b border-[#9c8b7a] pb-1">Additional Metrics</h3>
+          
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <h4 className="text-sm font-serif mb-1">SMOG Index</h4>
+              <div 
+                className="text-lg font-bold" 
+                style={{ color: getGradeLevelColor(smogIndex) }}
+              >
+                {smogIndex.toFixed(1)}
+              </div>
+              <div className="text-[#594a3a] italic text-xs">{getGradeLevelDescription(smogIndex)}</div>
+            </div>
+            
+            <div>
+              <h4 className="text-sm font-serif mb-1">Gunning Fog</h4>
+              <div 
+                className="text-lg font-bold" 
+                style={{ color: getGradeLevelColor(gunningFogIndex) }}
+              >
+                {gunningFogIndex.toFixed(1)}
+              </div>
+              <div className="text-[#594a3a] italic text-xs">{getGradeLevelDescription(gunningFogIndex)}</div>
+            </div>
           </div>
         </div>
         

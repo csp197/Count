@@ -13,6 +13,8 @@ Count is an elegant text analysis tool designed with a paperback book aesthetic.
 ### Readability Analysis
 - Flesch Reading Ease score calculation
 - Flesch-Kincaid Grade Level assessment (K-12)
+- SMOG Index (Simple Measure of Gobbledygook)
+- Gunning Fog Index for advanced readability assessment
 - Visual grade level indicator with color-coded feedback
 - Average words per sentence and syllables per word metrics
 
@@ -31,6 +33,7 @@ Count is an elegant text analysis tool designed with a paperback book aesthetic.
 - Elegant typography with serif fonts
 - Page number indicator that updates based on content length
 - Reading progress indicator at the top of the page
+- Dark mode "night reading" theme with warm, eye-friendly colors
 
 ## Getting Started
 

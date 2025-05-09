@@ -128,3 +128,91 @@ export function getReadabilityDescription(score: number): string {
     if (score >= 30) return "Difficult (10th-12th grade)";
     return "Very challenging (12th grade)";
 }
+
+/**
+ * Count complex words (words with 3 or more syllables)
+ */
+export function countComplexWords(text: string): number {
+    if (text.length === 0) {
+        return 0;
+    }
+    
+    const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+    
+    return words.filter(word => {
+        // Skip proper nouns that start with capital letter
+        if (/^[A-Z]/.test(word) && !/^[A-Z]+$/.test(word)) {
+            return false;
+        }
+        
+        // Count syllables and check if it's complex (3+ syllables)
+        try {
+            return syllable(word) >= 3;
+        } catch (error) {
+            console.error("Error counting syllables in word:", word, error);
+            return false;
+        }
+    }).length;
+}
+
+/**
+ * Calculate SMOG Index (Simple Measure of Gobbledygook)
+ * SMOG = 1.043 * sqrt(number of polysyllables * (30 / number of sentences)) + 3.1291
+ * 
+ * Result corresponds to US grade level needed to understand the text
+ */
+export function calculateSMOGIndex(text: string): number {
+    const sentenceCount = countSentences(text);
+    
+    if (sentenceCount === 0) {
+        return 0;
+    }
+    
+    // Count words with 3 or more syllables
+    const polysyllableCount = countComplexWords(text);
+    
+    // Apply SMOG formula
+    const smog = 1.043 * Math.sqrt(polysyllableCount * (30 / sentenceCount)) + 3.1291;
+    
+    // Ensure score is not negative and cap at grade 12
+    return Math.min(Math.max(smog, 0), 12);
+}
+
+/**
+ * Calculate Gunning Fog Index
+ * 0.4 * ((words / sentences) + 100 * (complex words / words))
+ * 
+ * Result corresponds to US grade level needed to understand the text
+ */
+export function calculateGunningFogIndex(text: string): number {
+    const wordCount = countWords(text);
+    const sentenceCount = countSentences(text);
+    const complexWordCount = countComplexWords(text);
+    
+    if (wordCount === 0 || sentenceCount === 0) {
+        return 0;
+    }
+    
+    const averageSentenceLength = wordCount / sentenceCount;
+    const percentComplexWords = complexWordCount / wordCount * 100;
+    
+    // Apply Gunning Fog formula
+    const gunningFog = 0.4 * (averageSentenceLength + percentComplexWords);
+    
+    // Ensure score is not negative and cap at grade 12
+    return Math.min(Math.max(gunningFog, 0), 12);
+}
+
+/**
+ * Get a text description of the reading level based on grade level
+ */
+export function getGradeLevelDescription(gradeLevel: number): string {
+    if (gradeLevel < 1) return "Kindergarten level";
+    if (gradeLevel <= 2) return "Very easy (1st-2nd grade)";
+    if (gradeLevel <= 4) return "Easy (3rd-4th grade)";
+    if (gradeLevel <= 6) return "Conversational (5th-6th grade)";
+    if (gradeLevel <= 8) return "Standard (7th-8th grade)";
+    if (gradeLevel <= 10) return "Somewhat difficult (9th-10th grade)";
+    if (gradeLevel <= 12) return "Difficult (11th-12th grade)";
+    return "Very difficult (College level)";
+}
