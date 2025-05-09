@@ -116,9 +116,9 @@ function App() {
                   <div className="reading-container text-center mt-6">
                     <div className="book-page-number">
                       <div className="font-serif italic">— {pageNumber} —</div>
-                      <div className="text-xs text-[#594a3a] italic mt-1">
+                      {/* <div className="text-xs text-[#594a3a] italic mt-1">
                         {pageNumber > 1 ? `Approximately ${pageNumber} pages in a typical paperback` : ""}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

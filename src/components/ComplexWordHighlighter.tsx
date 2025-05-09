@@ -77,7 +77,7 @@ const ComplexWordHighlighter = ({
   return (
     <>
       <div className="p-4">
-        <h2 className="text-xl font-serif mb-4 text-center italic">Complex Words</h2>
+        <h2 className="text-xl font-serif mb-4 text-center italic">Complexity Analysis</h2>
         
         <div className="flex justify-between items-center mb-3 border-b border-[#9c8b7a] pb-2">
           <h3 className="font-serif text-sm italic">Highlighted Words</h3>
