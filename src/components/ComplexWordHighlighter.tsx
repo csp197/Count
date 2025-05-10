@@ -81,8 +81,8 @@ const ComplexWordHighlighter = ({
         
         <div className="flex justify-between items-center mb-3 border-b border-[#9c8b7a] pb-2">
           <h3 className="font-serif text-sm italic">Highlighted Words</h3>
-          <div className={`px-2 py-1 text-xs border font-serif italic ${complexWordCount > 10 ? 'border-[#9c6e33] text-[#9c6e33]' : 'border-[#0f766e] text-[#0f766e]'}`}>
-            {complexWordCount} complex words
+          <div className={`px-2 py-1 text-xs border font-serif italic ${complexWordCount > 1 ? 'border-[#9c6e33] text-[#9c6e33]' : 'border-[#0f766e] text-[#0f766e]'}`}>
+            {complexWordCount > 1 ? `${complexWordCount} complex words` : `${complexWordCount} complex word`}
           </div>
         </div>
         
